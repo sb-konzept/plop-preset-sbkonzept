@@ -1,0 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+// import { withKnobs, select } from '@storybook/addon-knobs/react'
+
+import {{ properCase name }} from './index'
+
+storiesOf('{{ properCase name }}', module)
+  // .addDecorator(withKnobs)
+  // .addDecorator(story => <Container>{story()}</Container>)
+  .add('default', () => <{{ properCase name }} />)
