@@ -12,6 +12,7 @@ const componentExists = require('../../../utils/componentExists')
 module.exports = context => {
   const resolveBase = p => path.resolve(context.baseDir, p)
   const resolve = p => path.resolve(__dirname, p)
+
   return ({
     description: 'Add an unconnected component',
     prompts: [
@@ -71,13 +72,13 @@ module.exports = context => {
       const actions = [
         {
           type: 'add',
-          path: resolveBase('./components/{{properCase name}}/index.js'),
+          path: resolveBase(`./${context.componentDir}{{properCase name}}/index.js`),
           templateFile: componentTemplate,
           abortOnFail: true
         },
         {
           type: 'add',
-          path: resolveBase('./components/{{properCase name}}/tests/index.test.js'),
+          path: resolveBase(`./${context.componentDir}{{properCase name}}/tests/index.test.js`),
           templateFile: resolve('./test.js.hbs'),
           abortOnFail: true
         }
@@ -87,7 +88,7 @@ module.exports = context => {
       if (data.wantMessages) {
         actions.push({
           type: 'add',
-          path: resolveBase('./components/{{properCase name}}/messages.js'),
+          path: resolveBase(`./${context.componentDir}{{properCase name}}/messages.js`),
           templateFile: resolve('./messages.js.hbs'),
           abortOnFail: true
         })
@@ -97,7 +98,7 @@ module.exports = context => {
       if (data.wantStory) {
         actions.push({
           type: 'add',
-          path: resolveBase('./components/{{properCase name}}/stories.js'),
+          path: resolveBase(`./${context.componentDir}{{properCase name}}/stories.js`),
           templateFile: resolve('./stories.js.hbs'),
           abortOnFail: true
         })
@@ -107,7 +108,7 @@ module.exports = context => {
       if (data.wantLoadable) {
         actions.push({
           type: 'add',
-          path: resolveBase('./components/{{properCase name}}/Loadable.js'),
+          path: resolveBase(`./${context.componentDir}{{properCase name}}/Loadable.js`),
           templateFile: resolve('./loadable.js.hbs'),
           abortOnFail: true
         })
