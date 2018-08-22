@@ -7,9 +7,11 @@
 const fs = require('fs')
 const path = require('path')
 const componentGenerator = require('./generators/react/component/index.js')
+const rebassGenerator = require('./generators/rebass/index.js')
 
 module.exports = context => (plop) => {
   plop.setGenerator('react:component', componentGenerator(context))
+  plop.setGenerator('rebass', rebassGenerator(context))
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(
