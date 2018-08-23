@@ -24,9 +24,15 @@ module.exports = context => {
       },
       {
         type: 'list',
-        name: 'name',
+        name: 'rebassComponent',
         message: 'Select the type of rebass component to extend',
-        choices: () => require('./rebassComponents.json').sort(),
+        choices: () => require('./rebassComponents.json').sort()
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What should the component be called?',
+        default: (data) => data.rebassComponent,
         validate: (value) => {
           if (/.+/.test(value)) {
             return componentExists(context, value)
